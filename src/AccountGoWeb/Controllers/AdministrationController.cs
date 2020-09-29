@@ -19,7 +19,7 @@ namespace AccountGoWeb.Controllers
     public IActionResult Company()
     {
       ViewBag.PageContentHeader = "Company";
-      var model = GetAsync<Company>("administration/company").Result;
+      var model = GetAsync<Company>("administration/company").GetAwaiter().GetResult();
       if (model == null)
         model = new Company();
       return View(model);
@@ -46,7 +46,7 @@ namespace AccountGoWeb.Controllers
     {
       ViewBag.PageContentHeader = "Setup and Configuration";
       ViewBag.Accounts = Models.SelectListItemHelper.Accounts();
-      var model = GetAsync<GeneralLedgerSetting>("administration/settings").Result;
+      var model = GetAsync<GeneralLedgerSetting>("administration/settings").GetAwaiter().GetResult();
       if (model == null)
         model = new GeneralLedgerSetting();
       return View(model);
@@ -123,7 +123,7 @@ namespace AccountGoWeb.Controllers
           var content = new StringContent(serialize);
           content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
           HttpResponseMessage responseAddNewUser = Post("account/addnewuser", content);
-          Newtonsoft.Json.Linq.JObject resultAddNewUser = Newtonsoft.Json.Linq.JObject.Parse(responseAddNewUser.Content.ReadAsStringAsync().Result);
+          Newtonsoft.Json.Linq.JObject resultAddNewUser = Newtonsoft.Json.Linq.JObject.Parse(responseAddNewUser.Content.ReadAsStringAsync().GetAwaiter().GetResult());
 
           if ((bool)resultAddNewUser["succeeded"])
           {

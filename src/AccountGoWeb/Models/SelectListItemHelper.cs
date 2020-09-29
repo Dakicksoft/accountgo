@@ -10,7 +10,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> Accounts()
         {
-            var accounts = GetAsync<IEnumerable<Dto.Financial.Account>>("common/postingaccounts").Result;
+            var accounts = GetAsync<IEnumerable<Dto.Financial.Account>>("common/postingaccounts").GetAwaiter().GetResult();
 
             var selectAccounts = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectAccounts.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
@@ -22,7 +22,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> TaxGroups()
         {
-            var taxGroups = GetAsync<IEnumerable<Dto.TaxSystem.TaxGroup>>("tax/taxgroups").Result;
+            var taxGroups = GetAsync<IEnumerable<Dto.TaxSystem.TaxGroup>>("tax/taxgroups").GetAwaiter().GetResult();
             var selectTaxGroups = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectTaxGroups.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var taxGroup in taxGroups)
@@ -33,7 +33,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ItemTaxGroups()
         {
-            var itemtaxgroups = GetAsync<IEnumerable<Dto.TaxSystem.ItemTaxGroup>>("tax/itemtaxgroups").Result;
+            var itemtaxgroups = GetAsync<IEnumerable<Dto.TaxSystem.ItemTaxGroup>>("tax/itemtaxgroups").GetAwaiter().GetResult();
             var selectitemtaxgroups = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectitemtaxgroups.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var taxGroup in itemtaxgroups)
@@ -44,7 +44,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> PaymentTerms()
         {
-            var paymentTerms = GetAsync<IEnumerable<Dto.TaxSystem.TaxGroup>>("common/paymentterms").Result;
+            var paymentTerms = GetAsync<IEnumerable<Dto.TaxSystem.TaxGroup>>("common/paymentterms").GetAwaiter().GetResult();
             var selectPaymentTerms = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectPaymentTerms.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var term in paymentTerms)
@@ -55,7 +55,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> UnitOfMeasurements()
         {
-            var uoms = GetAsync<IEnumerable<Dto.TaxSystem.TaxGroup>>("common/measurements").Result;
+            var uoms = GetAsync<IEnumerable<Dto.TaxSystem.TaxGroup>>("common/measurements").GetAwaiter().GetResult();
             var selectUOMS = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectUOMS.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var item in uoms)
@@ -66,7 +66,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> ItemCategories()
         {
-            var categories = GetAsync<IEnumerable<Dto.Inventory.ItemCategory>>("common/itemcategories").Result;
+            var categories = GetAsync<IEnumerable<Dto.Inventory.ItemCategory>>("common/itemcategories").GetAwaiter().GetResult();
             var selectCategories = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectCategories.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var item in categories)
@@ -77,7 +77,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> CashBanks()
         {
-            var cashBanks = GetAsync<IEnumerable<Dto.Financial.Bank>>("common/cashbanks").Result;
+            var cashBanks = GetAsync<IEnumerable<Dto.Financial.Bank>>("common/cashbanks").GetAwaiter().GetResult();
             var selectCashBanks = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectCashBanks.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var item in cashBanks)
@@ -88,7 +88,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> Customers()
         {
-            var customers = GetAsync<IEnumerable<Dto.Sales.Customer>>("sales/customers").Result;
+            var customers = GetAsync<IEnumerable<Dto.Sales.Customer>>("sales/customers").GetAwaiter().GetResult();
             var selectCustomers = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectCustomers.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var item in customers)
@@ -99,7 +99,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> Vendors()
         {
-            var vendors = GetAsync<IEnumerable<Dto.Purchasing.Vendor>>("purchasing/vendors").Result;
+            var vendors = GetAsync<IEnumerable<Dto.Purchasing.Vendor>>("purchasing/vendors").GetAwaiter().GetResult();
             var selectVendors = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectVendors.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var item in vendors)
@@ -110,7 +110,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> Items()
         {
-            var items = GetAsync<IEnumerable<Dto.Inventory.Item>>("inventory/items").Result;
+            var items = GetAsync<IEnumerable<Dto.Inventory.Item>>("inventory/items").GetAwaiter().GetResult();
             var selectItems = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectItems.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var item in items)
@@ -121,7 +121,7 @@ namespace AccountGoWeb.Models
 
         public static IEnumerable<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem> Measurements()
         {
-            var measurements = GetAsync<IEnumerable<Dto.Inventory.Measurement>>("inventory/items").Result;
+            var measurements = GetAsync<IEnumerable<Dto.Inventory.Measurement>>("inventory/items").GetAwaiter().GetResult();
             var selectMeasurements = new HashSet<Microsoft.AspNetCore.Mvc.Rendering.SelectListItem>();
             selectMeasurements.Add(new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem() { Value = "", Text = "" });
             foreach (var item in measurements)

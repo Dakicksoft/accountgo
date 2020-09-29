@@ -116,7 +116,7 @@ namespace AccountGoWeb.Controllers
             ViewBag.Customers = Models.SelectListItemHelper.Customers();
             ViewBag.DebitAccounts = Models.SelectListItemHelper.CashBanks();
             ViewBag.CreditAccounts = Models.SelectListItemHelper.Accounts();
-            ViewBag.CustomersDetail = Newtonsoft.Json.JsonConvert.SerializeObject(GetAsync<IEnumerable<Customer>>("sales/customers").Result);
+            ViewBag.CustomersDetail = Newtonsoft.Json.JsonConvert.SerializeObject(GetAsync<IEnumerable<Customer>>("sales/customers").GetAwaiter().GetResult());
 
             return View(model);
         }
@@ -139,7 +139,7 @@ namespace AccountGoWeb.Controllers
             ViewBag.Customers = Models.SelectListItemHelper.Customers();
             ViewBag.DebitAccounts = Models.SelectListItemHelper.CashBanks();
             ViewBag.CreditAccounts = Models.SelectListItemHelper.Accounts();
-            ViewBag.CustomersDetail = Newtonsoft.Json.JsonConvert.SerializeObject(GetAsync<IEnumerable<Customer>>("sales/customers").Result);
+            ViewBag.CustomersDetail = Newtonsoft.Json.JsonConvert.SerializeObject(GetAsync<IEnumerable<Customer>>("sales/customers").GetAwaiter().GetResult());
 
             return View(model);
         }
@@ -175,7 +175,7 @@ namespace AccountGoWeb.Controllers
             else
             {
                 ViewBag.PageContentHeader = "Customer Card";
-                customerModel = GetAsync<Customer>("sales/customer?id=" + id).Result;
+                customerModel = GetAsync<Customer>("sales/customer?id=" + id).GetAwaiter().GetResult();
             }
 
             ViewBag.Accounts = SelectListItemHelper.Accounts();
@@ -223,7 +223,7 @@ namespace AccountGoWeb.Controllers
 
             var model = new Models.Sales.Allocate();
 
-            var receipt = GetAsync<Dto.Sales.SalesReceipt>("sales/salesreceipt?id=" + id).Result;
+            var receipt = GetAsync<Dto.Sales.SalesReceipt>("sales/salesreceipt?id=" + id).GetAwaiter().GetResult();
 
             ViewBag.CustomerName = receipt.CustomerName;
             ViewBag.ReceiptNo = receipt.ReceiptNo;
@@ -234,7 +234,7 @@ namespace AccountGoWeb.Controllers
             model.Amount = receipt.Amount;
             model.RemainingAmountToAllocate = receipt.RemainingAmountToAllocate;
 
-             var invoices = GetAsync<IEnumerable<Dto.Sales.SalesInvoice>>("sales/customerinvoices?id=" + receipt.CustomerId).Result;
+             var invoices = GetAsync<IEnumerable<Dto.Sales.SalesInvoice>>("sales/customerinvoices?id=" + receipt.CustomerId).GetAwaiter().GetResult();
 
             foreach (var invoice in invoices) {
                 if (invoice.Posted && invoice.TotalAllocatedAmount < invoice.Amount)
@@ -266,7 +266,7 @@ namespace AccountGoWeb.Controllers
                 }
             }
 
-            var receipt = GetAsync<Dto.Sales.SalesReceipt>("sales/salesreceipt?id=" + model.ReceiptId).Result;
+            var receipt = GetAsync<Dto.Sales.SalesReceipt>("sales/salesreceipt?id=" + model.ReceiptId).GetAwaiter().GetResult();
             ViewBag.CustomerName = receipt.CustomerName;
             ViewBag.ReceiptNo = receipt.ReceiptNo;
 
@@ -275,7 +275,7 @@ namespace AccountGoWeb.Controllers
 
         public IActionResult SalesInvoicePdf(int id)
         {
-            var invoice = GetAsync<Dto.Sales.SalesInvoice>("sales/salesinvoiceforprinting?id=" + id).Result;
+            var invoice = GetAsync<Dto.Sales.SalesInvoice>("sales/salesinvoiceforprinting?id=" + id).GetAwaiter().GetResult();
             SalesInvoice salesInvoiceModel = new SalesInvoice();
             salesInvoiceModel.ReferenceNo = invoice.ReferenceNo;
             salesInvoiceModel.No = invoice.No;

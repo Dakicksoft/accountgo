@@ -72,7 +72,7 @@ namespace AccountGoWeb.Controllers
             else // editing existing contact
             {
                 ViewBag.PageContentHeader = "Contact Card";
-                contact = GetAsync<Contact>("contact/contact?id=" + id + "&partyId=" + partyId + "&partyType=" + partyType).Result;
+                contact = GetAsync<Contact>("contact/contact?id=" + id + "&partyId=" + partyId + "&partyType=" + partyType).GetAwaiter().GetResult();
             }
 
             return View(contact);

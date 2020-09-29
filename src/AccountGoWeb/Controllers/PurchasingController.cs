@@ -42,7 +42,7 @@ namespace AccountGoWeb.Controllers
         {
             ViewBag.PageContentHeader = "Purchase Order";
 
-            var purchOrderDto = GetAsync<Dto.Purchasing.PurchaseOrder>("purchasing/purchaseorder?id=" + purchId).Result;
+            var purchOrderDto = GetAsync<Dto.Purchasing.PurchaseOrder>("purchasing/purchaseorder?id=" + purchId).GetAwaiter().GetResult();
 
             ViewBag.Vendors = Models.SelectListItemHelper.Vendors();
 
@@ -119,7 +119,7 @@ namespace AccountGoWeb.Controllers
             else
             {
                 ViewBag.PageContentHeader = "Vendor Card";
-                vendorModel = GetAsync<Dto.Purchasing.Vendor>("purchasing/vendor?id=" + id).Result;
+                vendorModel = GetAsync<Dto.Purchasing.Vendor>("purchasing/vendor?id=" + id).GetAwaiter().GetResult();
             }
 
             ViewBag.Accounts = Models.SelectListItemHelper.Accounts();
@@ -160,7 +160,7 @@ namespace AccountGoWeb.Controllers
         {
             ViewBag.PageContentHeader = "Make Payment";
 
-            var invoice = GetAsync<Dto.Purchasing.PurchaseInvoice>("purchasing/purchaseinvoice?id=" + id).Result;
+            var invoice = GetAsync<Dto.Purchasing.PurchaseInvoice>("purchasing/purchaseinvoice?id=" + id).GetAwaiter().GetResult();
 
             var model = new Models.Purchasing.Payment()
             {

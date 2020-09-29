@@ -39,7 +39,7 @@ namespace AccountGoWeb.Controllers
                 var content = new StringContent(serialize);
                 content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
                 HttpResponseMessage responseSignIn = Post("account/signin", content);
-                Newtonsoft.Json.Linq.JObject resultSignIn = Newtonsoft.Json.Linq.JObject.Parse(responseSignIn.Content.ReadAsStringAsync().Result);
+                Newtonsoft.Json.Linq.JObject resultSignIn = Newtonsoft.Json.Linq.JObject.Parse(responseSignIn.Content.ReadAsStringAsync().GetAwaiter().GetResult());
 
                 if (resultSignIn["result"] != null)
                 {
@@ -125,14 +125,14 @@ namespace AccountGoWeb.Controllers
                     var content = new StringContent(serialize);
                     content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
                     HttpResponseMessage responseAddNewUser = Post("account/addnewuser", content);
-                    Newtonsoft.Json.Linq.JObject resultAddNewUser = Newtonsoft.Json.Linq.JObject.Parse(responseAddNewUser.Content.ReadAsStringAsync().Result);
+                    Newtonsoft.Json.Linq.JObject resultAddNewUser = Newtonsoft.Json.Linq.JObject.Parse(responseAddNewUser.Content.ReadAsStringAsync().GetAwaiter().GetResult());
 
                     HttpResponseMessage responseInitialized = null;
                     Newtonsoft.Json.Linq.JObject resultInitialized = null;
                     if ((bool)resultAddNewUser["succeeded"])
                     {
                         responseInitialized = Get("administration/initializedcompany");
-                        resultInitialized = Newtonsoft.Json.Linq.JObject.Parse((responseInitialized.Content.ReadAsStringAsync().Result));
+                        resultInitialized = Newtonsoft.Json.Linq.JObject.Parse((responseInitialized.Content.ReadAsStringAsync().GetAwaiter().GetResult()));
                         return RedirectToAction(nameof(AccountController.SignIn), "Account");
                     }
                     else

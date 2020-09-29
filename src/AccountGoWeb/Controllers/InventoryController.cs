@@ -65,7 +65,7 @@ namespace AccountGoWeb.Controllers
             else
             {
                 ViewBag.PageContentHeader = "Item Card";
-                itemModel = GetAsync<Item>("inventory/item?id=" + id).Result;
+                itemModel = GetAsync<Item>("inventory/item?id=" + id).GetAwaiter().GetResult();
             }
 
             ViewBag.Accounts = Models.SelectListItemHelper.Accounts();

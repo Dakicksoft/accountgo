@@ -34,7 +34,7 @@ namespace AccountGoWeb.Controllers
                 client.BaseAddress = new System.Uri(baseUri);
                 client.DefaultRequestHeaders.Accept.Clear();
                 var response = client.GetAsync(baseUri + uri);
-                return response.Result;
+                return response.GetAwaiter().GetResult();
             }
         }
 

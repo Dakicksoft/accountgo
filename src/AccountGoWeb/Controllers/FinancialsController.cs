@@ -188,7 +188,7 @@ namespace AccountGoWeb.Controllers
         {
             ViewBag.PageContentHeader = "Cash/Banks";
 
-            var banks = GetAsync<IEnumerable<Dto.Financial.Bank>>("financials/cashbanks").Result;
+            var banks = GetAsync<IEnumerable<Dto.Financial.Bank>>("financials/cashbanks").GetAwaiter().GetResult();
 
             return View(banks);
         }
