@@ -1,5 +1,6 @@
 ﻿using Dto.Administration;
 using Dto.Security;
+using Infrastructure.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -31,7 +32,7 @@ namespace AccountGoWeb.Controllers
       ViewBag.PageContentHeader = "Company";
       if (ModelState.IsValid)
       {
-        var serialize = Newtonsoft.Json.JsonConvert.SerializeObject(model);
+        var serialize = model.ToJson();
         var content = new StringContent(serialize);
         content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
 

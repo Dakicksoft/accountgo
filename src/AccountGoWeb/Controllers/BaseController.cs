@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace AccountGoWeb.Controllers
 {
@@ -8,7 +9,7 @@ namespace AccountGoWeb.Controllers
     {
         protected IConfiguration _baseConfig;
 
-        protected async System.Threading.Tasks.Task<T> GetAsync<T>(string uri)
+        protected async Task<T> GetAsync<T>(string uri)
         {
             string responseJson = string.Empty;
             using (var client = new HttpClient())
@@ -38,7 +39,7 @@ namespace AccountGoWeb.Controllers
             }
         }
 
-        protected async System.Threading.Tasks.Task<string> PostAsync(string uri, StringContent data)
+        protected async Task<string> PostAsync(string uri, StringContent data)
         {
             string responseJson = string.Empty;
             using (var client = new HttpClient())

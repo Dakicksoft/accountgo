@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Services.Administration;
 using Services.Security;
+using System.Threading.Tasks;
 
 namespace Api.Controllers
 {
@@ -25,7 +26,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async System.Threading.Tasks.Task<IActionResult> SignIn([FromBody]dynamic loginViewModel)
+        public async Task<IActionResult> SignIn([FromBody]dynamic loginViewModel)
         {
             if (loginViewModel == null)
             {
@@ -81,7 +82,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async System.Threading.Tasks.Task<IActionResult> AddNewUser([FromBody]dynamic registerViewModel)
+        public async Task<IActionResult> AddNewUser([FromBody]dynamic registerViewModel)
         {
             try
             {
