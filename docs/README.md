@@ -5,11 +5,11 @@ Accounting System built on .net core, opensource and cross platform (ASP.NET Cor
 
 ### IMPORTANT NOTE:
 
-- Make sure you have the latest .net core 3.1 sdk and runtime installed. Go to https://dotnet.microsoft.com/download/dotnet-core/3.1 to download the installer. Verify you have .net core 3.1.* (* means the latest) sdk:
+- Make sure you have the latest .net core 5.0 sdk and runtime installed. Go to https://dotnet.microsoft.com/download/dotnet-core/5.0 to download the installer. Verify you have .net core 5.0.* (* means the latest) sdk:
 
 ```
 % dotnet --list-sdks
-3.1.302 [/Users/Marvin/.dotnet/sdk]
+5.0.201 [C:\Program Files\dotnet\sdk]
 ```
 
 - You can use MacOS, Linux, Windows to develop and deploy this project. 
@@ -26,7 +26,7 @@ On a high level, this solution will provide modules including but not limited to
 
 # Getting Started
 - Download and install Visual Studio Code from https://code.visualstudio.com/ based on your Operating System
-- Clone or fork the latest repository in `https://github.com/AccountGo/accountgo`
+- Clone or fork the latest repository in `https://github.com/Dakicksoft/accountgo`
 
 ## Global Options
 `AccountGoWeb` project requires `webpack`, `webpack-cli`, `gulp` and `typescript` installed and if you wish to install these globally you can proceed on these below steps. Otherwise you can skip these steps and proceed to **Project Builds**
@@ -85,7 +85,7 @@ Using EntityFrameworkCore CLI database migration will create and migrate the `ac
 % dotnet tool list -g
 Package Id      Version      Commands 
 --------------------------------------
-dotnet-ef       3.1.6        dotnet-ef
+dotnet-ef       5.0.4        dotnet-ef
 
 % dotnet tool install --global dotnet-ef
 
@@ -96,10 +96,10 @@ In root folder `accountgo` run the following command using a terminal, command p
 1. `dotnet ef database update --project ./src/Api/ --msbuildprojectextensionspath .build/obj/Api/ --context ApplicationIdentityDbContext`
 2. `dotnet ef database update --project ./src/Api/ --msbuildprojectextensionspath .build/obj/Api/ --context ApiDbContext`
 
-If you install your .net runtime to other location other than default installation directory, you need to set the environment variable `DOTNET_ROOT` to the installation directory of your dotnet. For example, I installed my dotnet sdk to `/Users/Marvin/.dotnet` so I will set the env variable to: 
+If you install your .net runtime to other location other than default installation directory, you need to set the environment variable `DOTNET_ROOT` to the installation directory of your dotnet. For example, I installed my dotnet sdk to `/Users/Dakicksoft/.dotnet` so I will set the env variable to: 
 
 ```
-% export DOTNET_ROOT=/Users/Marvin/.dotnet
+% export DOTNET_ROOT=/Users/Dakicksoft/.dotnet
 ```
 
 ***Note:*** The initial migration only contains initial security data username and password.
@@ -184,7 +184,7 @@ To run everything (database, api, web) in docker container you can use docker-co
 1. Initialize data by calling a special api endpoint directly. http://localhost:8001/api/administration/initializedcompany
 
 # Technology Stack
-- ASP.NET Core 3.1
+- ASP.NET Core 5.0
 - ReactJS
 - MobX, React-MobX
 - Axios
